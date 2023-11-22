@@ -1,7 +1,7 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        if len(s) == 0:
-            return t[0]
-        for i in range(len(s)):
-            t = t.replace(s[i], '', 1)
-        return t[0]
+        from collections import Counter
+
+        counter_s = Counter(s)
+        counter_t = Counter(t)
+        return list((counter_t - counter_s).keys())[0]

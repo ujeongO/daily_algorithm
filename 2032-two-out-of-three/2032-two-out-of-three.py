@@ -1,7 +1,12 @@
 class Solution:
     def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
-        # set 활용
-        set1 = set(nums1)
-        set2 = set(nums2)
-        set3 = set(nums3)
-        return (set1 & set2) | (set1 & set3) | (set2 & set3)
+        from collections import Counter
+        
+        answer = []
+        set1, set2, set3 = set(nums1), set(nums2), set(nums3)
+        set_all = list(set1) + list(set2) + list(set3)
+        set_all = Counter(set_all)
+        for key, value in set_all.items():
+            if value > 1:
+                answer.append(key)
+        return answer

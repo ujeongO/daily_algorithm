@@ -4,8 +4,7 @@ class Solution:
         
         answer = []
         set1, set2, set3 = set(nums1), set(nums2), set(nums3)
-        set_all = list(set1) + list(set2) + list(set3)
-        set_all = Counter(set_all)
+        set_all = Counter(list(set1) + list(set2) + list(set3))
         for key, value in set_all.items():
             if value > 1:
                 answer.append(key)
